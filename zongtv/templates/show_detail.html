@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ show.title }}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+    body{
+        background:#151515;
+        margin:0;
+        color:white;
+        font-family:sans-serif;
+    }
+
+    .show-banner{
+        position:relative;
+        height:400px;
+        margin-top:75px; /* navbar height */
+    }
+
+    .show-banner img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .overlay{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+
+        background:linear-gradient(
+            to right,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.3)
+        );
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+
+        padding-left:60px;
+    }
+
+    .overlay h1{
+        font-size:55px;
+        margin:0;
+    }
+
+    .overlay p{
+        max-width:600px;
+        color:#ddd;
+        margin-top:15px;
+    }
+
+    .episodes-section{
+        padding:40px 50px;
+    }
+
+    .episodes-row{
+        display:flex;
+        gap:20px;
+        overflow-x:auto;
+        scrollbar-width:none;
+    }
+
+    .episodes-row::-webkit-scrollbar{
+        display:none;
+    }
+
+    .episode-card{
+        min-width:220px;
+    }
+
+    .episode-card img{
+        width:220px;
+        height:130px;
+        border-radius:10px;
+        object-fit:cover;
+    }
+
+    .episode-title{
+        margin-top:10px;
+        font-size:18px;
+        color:white;
+    }
+
+    .episode-card a{
+        text-decoration:none;
+    }
+
+
+    </style>
+
+</head>
+
+<body>
+
+{% include 'includes/header.html' %}
+
+<div class="show-banner">
+
+    <img src="{{ show.poster.url }}">
+
+    <div class="overlay">
+
+        <small>
+            Only On Zong TV
+        </small>
+
+        <h1>
+            {{ show.title }}
+        </h1>
+
+        <p>
+            {{ show.description }}
+        </p>
+
+    </div>
+
+</div>
+
+<div class="episodes-section">
+
+    <h2>Episodes</h2>
+
+    <div class="episodes-row">
+
+        {% for episode in episodes %}
+
+        <div class="episode-card">
+
+            <a href="{% url 'video_detail' episode.id %}">
+
+                <img src="{{ episode.thumbnail.url }}">
+
+                <div class="episode-title">
+                    Episode {{ episode.episode_number }}
+                </div>
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% include 'includes/footer.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

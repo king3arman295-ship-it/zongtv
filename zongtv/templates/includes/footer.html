@@ -1,0 +1,192 @@
+{% load static %}
+<style>
+    .footer-section{
+
+    background:#171717;
+
+    border-top:2px solid #8dc63f;
+    border-bottom:2px solid #8dc63f;
+
+    padding:60px 80px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:50px;
+}
+
+.footer-left,
+.footer-center,
+.footer-right{
+    flex:1;
+}
+
+.footer-left{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.footer-logo{
+
+    width:220px;
+
+    margin-bottom:20px;
+}
+
+.footer-left a{
+    color:#cfcfcf;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.footer-left a:hover{
+    color:#8dc63f;
+    padding-left:5px;
+}
+
+.footer-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ccc;
+    font-size:16px;
+    text-align:center;
+}
+.footer-right{
+    text-align:center;
+}
+.footer-right h4{
+
+    color:white;
+
+    margin-bottom:20px;
+
+    font-size:22px;
+    font-weight:700;
+}
+
+.qr-container{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.qr-code{
+    width:120px;
+    background:white;
+    padding:8px;
+    border-radius:10px;
+}
+.footer-right{
+    text-align:center;
+}
+@media (max-width:768px){
+
+    .navbar-custom{
+        padding:10px 15px;
+        height:auto;
+    }
+
+    .channel-section,
+    .show-section{
+        padding:15px;
+    }
+
+    .channel-title{
+        font-size:18px;
+    }
+
+    .more-link{
+        font-size:12px;
+    }
+
+    .controls{
+        display:none;
+    }
+
+    .channel-card{
+        width:90px;
+        height:90px;
+        min-width:90px;
+    }
+
+    .show-card{
+        width:130px;
+        height:190px;
+        min-width:130px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        text-align:center;
+        gap:30px;
+    }
+
+    .footer-logo{
+        width:160px;
+    }
+
+    .qr-code{
+        width:120px;
+    }
+
+    #carouselExampleControls .carousel-item{
+        min-height:220px;
+        height:35vh;
+    }
+
+    #carouselExampleControls .carousel-item img{
+        min-height:220px;
+        height:35vh;
+    }
+
+    .channel-header{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+}
+</style>
+<footer class="footer-section">
+
+    <div class="footer-container">
+
+        <div class="footer-left">
+
+            <img src="{% static 'images/logo.png' %}"
+                 class="footer-logo">
+
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact Us</a>
+            <a href="#">FAQs</a>
+
+        </div>
+
+        <div class="footer-center">
+
+            Copyright © 2024 All rights reserved.
+
+        </div>
+
+        <div class="footer-right">
+
+            <h4>Scan To Download Our App</h4>
+
+            <img src="{% static 'images/qr/qr-code.png' %}"
+     class="qr-code">
+
+        </div>
+
+    </div>
+
+</footer>

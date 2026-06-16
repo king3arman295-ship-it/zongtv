@@ -1,0 +1,57 @@
+<section class="shows-section">
+
+    <div class="channel-header">
+
+        <div>
+            <span class="channel-title">
+                {{ category.name }} >
+            </span>
+
+            <a href="{% url 'category_detail' category.id %}"
+               class="more-link">
+                MORE
+            </a>
+        </div>
+
+        <div class="controls">
+            <button onclick="moveLeft('{{ category.id }}')">❮</button>
+            <button onclick="moveRight('{{ category.id }}')">❯</button>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="shows-wrapper" id="showRow{{ category.id }}">
+
+        {% for video in category.videos.all|slice:":8" %}
+
+        <div class="show-card">
+
+            <a href="{% url 'video_detail' video.id %}">
+
+                <img src="{{ video.thumbnail.url }}"
+                     loading="lazy"
+                     decoding="async">
+
+                <div class="card-overlay">
+
+                    <div class="card-title">
+                        {{ video.title }}
+                    </div>
+
+                    <span class="watch-btn">
+                        Watch Now
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
